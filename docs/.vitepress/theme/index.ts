@@ -6,8 +6,9 @@ import "./styles/style.css";
 import "./styles/tailwind.css";
 import StudySpace from "./pages/studySpace/StudySpace.vue";
 import ArticleList from "./pages/studySpace/ArticleList.vue";
-import sideNav from "./pages/studySpace/sideNav.vue";
+import SideNav from "./pages/studySpace/SideNav.vue";
 import { useRoute } from "vitepress";
+import Layout from "./Layout.vue";
 
 export default {
   extends: DefaultTheme,
@@ -16,13 +17,13 @@ export default {
 
     console.log(route);
     if (route.path.includes("/studySpace")) {
-      return h(DefaultTheme.Layout, null, {
+      return h(Layout, null, {
         // https://vitepress.dev/guide/extending-default-theme#layout-slots
-        "doc-top": () => h(sideNav),
+        "doc-top": () => h(SideNav),
       });
     }
 
-    return h(DefaultTheme.Layout, null, {
+    return h(Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     });
   },

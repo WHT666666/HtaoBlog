@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed">
+  <div class="fixed left-82  w-56" id="aside-left">
     <dl
       class="pt-3 pb-3 xl:pt-5 xl:border-b xl:border-gray-200 dark:xl:border-slate-200/5"
     >

@@ -6,6 +6,13 @@ export default defineConfig({
   title: "Htao Blog System",
   base: "/htaoBlog/",
   description: "A personal Blog system",
+  markdown: {
+    container: {
+      tipLabel: "提示",
+      warningLabel: "注意",
+      dangerLabel: "警告",
+    }
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

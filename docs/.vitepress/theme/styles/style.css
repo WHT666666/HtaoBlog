@@ -145,3 +145,19 @@
 .link-link:hover {
   color: var(--vp-c-brand-1);
 }
+
+
+.aside-container {
+  right: 100px;
+}
+
+@media screen and (width < 1536px) {
+  #aside-left {
+    display: none;
+  }
+}
+
+
+#my-anchor2{
+  color: red;
+}
