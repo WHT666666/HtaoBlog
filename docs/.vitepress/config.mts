@@ -16,6 +16,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
+      { text: "郎的诱惑", link: "/happy/happy" },
       { text: "学习空间", link: "/studySpace/studySpace" },
       { text: "项目", link: "/project/project" },
       { text: "个人简介", link: "/personalProfile/personalProfile" },
