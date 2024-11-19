@@ -151,7 +151,7 @@
   right: 100px;
 }
 
-@media screen and (width < 1536px) {
+@media screen and (width < 1400px) {
   #aside-left {
     display: none;
   }

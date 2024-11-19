@@ -44,7 +44,7 @@ export default defineConfig({
     outline: [2, 6],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "github", link: "https://github.com/htao-123" },
     ],
   },
 });

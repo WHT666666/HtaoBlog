@@ -1,20 +1,24 @@
 <!-- .vitepress/theme/Layout.vue -->
 
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import { nextTick, provide } from 'vue'
+import { useData } from "vitepress";
+import DefaultTheme from "vitepress/theme";
+import { nextTick, provide } from "vue";
+import { useRoute } from "vitepress";
+import SideNav from "./pages/studySpace/SideNav.vue";
 
-const { isDark } = useData()
+const { isDark } = useData();
+const route = useRoute();
+
 
 const enableTransitions = () =>
-  'startViewTransition' in document &&
-  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+  "startViewTransition" in document &&
+  window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
-provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
+provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
   if (!enableTransitions()) {
-    isDark.value = !isDark.value
-    return
+    isDark.value = !isDark.value;
+    return;
   }
 
   const clipPath = [
@@ -22,27 +26,31 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     `circle(${Math.hypot(
       Math.max(x, innerWidth - x),
       Math.max(y, innerHeight - y)
-    )}px at ${x}px ${y}px)`
-  ]
+    )}px at ${x}px ${y}px)`,
+  ];
 
-  await document.startViewTransition(async () => {
-    isDark.value = !isDark.value
-    await nextTick()
-  }).ready
+  await (document as any).startViewTransition(async () => {
+    isDark.value = !isDark.value;
+    await nextTick();
+  }).ready;
 
   document.documentElement.animate(
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
       duration: 300,
-      easing: 'ease-in',
-      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
+      easing: "ease-in",
+      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
     }
-  )
-})
+  );
+});
 </script>
 
 <template>
-  <DefaultTheme.Layout />
+  <DefaultTheme.Layout>
+    <template v-if="route.path.includes('/studySpace')" #doc-top >
+      <SideNav />
+    </template>
+  </DefaultTheme.Layout>
 </template>
 
 <style>
